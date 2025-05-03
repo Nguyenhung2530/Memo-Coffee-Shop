@@ -36,6 +36,7 @@ Phần backend được thiết kế để quản lý toàn bộ hoạt động 
 - Quản lý trạng thái đơn hàng (đang xử lý, đã giao, đã hủy).
 - Tích hợp chức năng thông báo khi có đơn hàng mới.
 
+
 ---
 
 ### **2. Frontend (Customer)**
@@ -64,7 +65,7 @@ Phần frontend được thiết kế để khách hàng có thể dễ dàng đ
 Công nghệ sử dụng
 - **Frontend**: HTML, CSS, JavaScript 
 - **Backend**: PHP (XAMPP), MySQL để quản lý cơ sở dữ liệu.
-- **Giao tiếp giữa Frontend và Backend**: Restfull API.
+- **Giao tiếp giữa Frontend và Backend**: Restful API.
 -
 
 --- Demo

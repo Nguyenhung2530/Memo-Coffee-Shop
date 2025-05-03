@@ -67,4 +67,19 @@ Công nghệ sử dụng
 - **Giao tiếp giữa Frontend và Backend**: Restfull API.
 -
 
----
+--- Demo
+![image](https://github.com/user-attachments/assets/ce58be47-46a6-445e-a7a2-1d38954f602c)
+
+
+![image](https://github.com/user-attachments/assets/d5d103b0-dd79-4ce2-86b7-7675448d8e2c)
+
+
+![image](https://github.com/user-attachments/assets/18dce03c-1e11-4c29-99f3-db23838fa5db)
+
+
+![image](https://github.com/user-attachments/assets/e0a62345-8c59-400c-a3fa-14793341863d)
+
+
+![image](https://github.com/user-attachments/assets/5df6fd9f-c5fc-4bbc-baf4-69a1644f002a)
+
+

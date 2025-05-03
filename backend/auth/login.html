@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Hệ thống quản lý quán cà phê</title>
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body>
+    <div class="left-side">
+        <img src="../assets/images/left_background.png" class="left-side-image">
+    </div>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Cafe Beans Logo">
+                </div>
+                <h2>Welcome Back, Please login to your account</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="error-message" id="loginMessage"></div>
+                    <button type="submit">Sign In</button>
+                </form>
+                <div class="google-signin">
+                    Sign in with google
+                </div>
+                <div class="signup-link">
+                    Don't have an account? <a href="#">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const messageDiv = document.getElementById('loginMessage');
+            
+            messageDiv.style.display = 'block';
+            messageDiv.textContent = 'Đang xử lý...';
+
+            fetch('login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.style.color = 'green';
+                    messageDiv.textContent = 'Đăng nhập thành công!';
+                    window.location.href = data.redirect;
+                } else {
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Có lỗi xảy ra khi đăng nhập';
+            });
+        });
+    </script>
+</body>
+</html>

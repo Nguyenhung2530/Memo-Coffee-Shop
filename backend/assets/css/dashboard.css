@@ -1,0 +1,301 @@
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f6fa;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 35px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 90px;
+}
+
+.header h2 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    height: calc(100vh - 90px);
+    position: fixed;
+    top: 90px;
+    left: 0;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.sidebar-menu li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eef2f5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li:hover {
+    background-color: #f6f9fc;
+    padding-left: 25px;
+}
+
+.sidebar-menu li.active {
+    background-color: #1e3c72;
+    color: white;
+}
+
+/* =========================
+   MAIN CONTENT & CARD
+========================= */
+.main-content {
+    margin-left: 250px;
+    padding: 30px;
+    margin-top: 90px;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #1e3c72;
+}
+
+h3 {
+    margin: 30px 0 20px 0;
+    color: #1e3c72;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #1e3c72;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.card .value {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2a5298;
+}
+
+/* =========================
+   TABLE
+========================= */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #1e3c72;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eef2f5;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f8f9ff;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #1e3c72;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2a5298;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.edit-btn, .delete-btn {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* =========================
+   FORM
+========================= */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #1e3c72;
+}
+
+label {
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* =========================
+   CUSTOM CARD (Employee/Customer)
+========================= */
+.employee-list, .customer-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.employee-card, .customer-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.employee-card h3, .customer-card h3 {
+    margin: 0 0 10px;
+}
+
+.employee-card p, .customer-card p {
+    margin: 5px 0;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-card {
+        width: 100%;
+    }
+}
+

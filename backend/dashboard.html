@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Hệ thống quản lý quán cà phê</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2> Hệ Thống Quản Lý Memo Coffee </h2>
+        <div>Xin chào, <span id="username">Admin</span> | <a href="#" onclick="logout()">Đăng xuất</a></div>
+    </div>
+
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="active" onclick="loadDashboard()">Trang chủ</li>
+            <li onclick="loadContent('drinks')">Quản lý thức uống</li>
+            <li onclick="loadContent('employees')">Quản lý nhân viên</li>
+            <li onclick="loadContent('customers')">Quản lý khách hàng</li>
+            <li onclick="loadContent('ingredients')">Quản lý nguyên liệu</li>
+            <li onclick="loadContent('invoices')">Quản lý hóa đơn</li>
+            <li onclick="loadContent('orders')">Đơn hàng online</li>
+        </ul>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <!-- Nội dung sẽ được load động -->
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

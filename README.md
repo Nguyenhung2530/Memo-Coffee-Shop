@@ -64,9 +64,9 @@ Phần frontend được thiết kế để khách hàng có thể dễ dàng đ
 
 Công nghệ sử dụng
 - **Frontend**: HTML, CSS, JavaScript 
-- **Backend**: PHP (XAMPP), MySQL để quản lý cơ sở dữ liệu.
+- **Backend**: PHP (XAMPP), MySQL, Xử lý phân quyền login (session)
 - **Giao tiếp giữa Frontend và Backend**: Restful API.
--
+
 
 --- Demo 
 

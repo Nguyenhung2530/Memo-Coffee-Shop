@@ -1,74 +1,143 @@
- Mô tả Dự án: Hệ thống Quản lý Quán Cà phê (Coffee Shop Management System)
+# ☕️ Memo Coffee Management System
 
-Dự án này là một hệ thống quản lý quán cà phê, được chia thành hai phần chính: Backend (Admin) và Frontend (Customer). Dưới đây là chi tiết từng phần:
+## 📌 Mục đích dự án
+- Quản lý toàn diện hoạt động kinh doanh của quán cà phê.
+- Cung cấp trải nghiệm mua hàng trực tuyến cho khách hàng.
+- Tối ưu hóa quy trình quản lý và vận hành.
 
----
+## 🏗️ Cấu trúc hệ thống
 
-1. Backend (Admin)
-Phần backend được thiết kế để quản lý toàn bộ hoạt động của quán cà phê. Các chức năng chính bao gồm:
+### 🎛️ Hệ thống quản trị (Admin Dashboard)
 
-1.1. Quản lý thức uống (Drinks)
-- Thêm, sửa, xóa và cập nhật thông tin các loại thức uống.
-- Quản lý giá cả, mô tả, hình ảnh và danh mục thức uống.
+#### 🔐 Đăng nhập & Xác thực
+- Phân quyền người dùng (Admin / Khách hàng)
+- Bảo mật session
+- Kiểm tra quyền truy cập
 
-1.2. Quản lý nhân viên (Employees)
-- Hiển thị danh sách nhân viên theo dạng thẻ hoặc danh sách.
-- Thêm, sửa, xóa thông tin nhân viên (tên, vị trí, số điện thoại, lương, trạng thái làm việc).
-- Giao diện hiển thị nhân viên có thể được tùy chỉnh (hiển thị theo hàng ngang hoặc dọc).
+#### 🍹 Quản lý thức uống
+- Thêm / Sửa / Xóa thức uống
+- Phân loại theo danh mục
+- Quản lý size và giá
+- Theo dõi trạng thái hàng (còn / hết hàng)
 
-#### **1.3. Quản lý khách hàng (Customers)**
-- Quản lý thông tin khách hàng (tên, số điện thoại, email, điểm tích lũy, tổng chi tiêu, lần cuối ghé thăm).
-- Hiển thị danh sách khách hàng theo dạng thẻ.
-- Tích hợp chức năng tìm kiếm hoặc lọc khách hàng.
+#### 👨‍🍳 Quản lý nhân viên
+- Quản lý thông tin nhân viên
+- Vị trí công việc
+- Lương và ngày làm việc
+- Trạng thái làm việc
 
-#### **1.4. Quản lý nguyên liệu (Ingredients)**
-- Quản lý kho nguyên liệu (tên nguyên liệu, số lượng tồn kho, đơn vị tính).
-- Thêm, sửa, xóa và cập nhật thông tin nguyên liệu.
-- Theo dõi mức tồn kho để đảm bảo không bị thiếu nguyên liệu.
+#### 👥 Quản lý khách hàng
+- Quản lý thông tin khách hàng
+- Hệ thống điểm tích lũy
+- Lịch sử mua hàng
+- Ghi chú thông tin khách hàng
 
-#### **1.5. Quản lý hóa đơn (Invoices)**
-- Hiển thị danh sách hóa đơn đã thanh toán.
-- Quản lý chi tiết hóa đơn (món đã gọi, số lượng, tổng tiền).
-- Tích hợp chức năng tìm kiếm hóa đơn theo ngày hoặc khách hàng.
+#### 🧂 Quản lý nguyên liệu 
+- Quản lý tên, đơn vị, số lượng tồn kho
+- Theo dõi giá mỗi đơn vị
+- Kiểm tra tồn kho tối thiểu
 
-#### **1.6. Quản lý đơn hàng online (Orders)**
-- Hiển thị danh sách đơn hàng online từ khách hàng.
-- Quản lý trạng thái đơn hàng (đang xử lý, đã giao, đã hủy).
-- Tích hợp chức năng thông báo khi có đơn hàng mới.
+#### 🧾 Quản lý hóa đơn 
+- Ghi nhận hóa đơn bán hàng
+- Liên kết đến thông tin khách hàng và nhân viên
+- Tính tổng tiền, ngày thanh toán
 
+#### 🛒 Đơn hàng online 
 
----
-
-### **2. Frontend (Customer)**
-Phần frontend được thiết kế để khách hàng có thể dễ dàng đặt hàng trực tuyến. Các chức năng chính bao gồm:
-
-#### **2.1. Giao diện đặt hàng**
-- Hiển thị danh sách thức uống với hình ảnh, giá cả và mô tả.
-- Cho phép khách hàng thêm món vào giỏ hàng.
-- Tích hợp chức năng tìm kiếm và lọc thức uống theo danh mục.
-
-#### **2.2. Giỏ hàng**
-- Hiển thị danh sách các món đã chọn.
-- Tính tổng tiền và cho phép khách hàng chỉnh sửa số lượng món.
-- Tích hợp chức năng thanh toán trực tuyến.
-
-#### **2.3. Đăng nhập/Đăng ký**
-- Khách hàng có thể đăng nhập hoặc đăng ký tài khoản.
-- Lưu thông tin khách hàng để hỗ trợ tích lũy điểm hoặc theo dõi lịch sử mua hàng.
-
-#### **2.4. Theo dõi đơn hàng**
-- Khách hàng có thể theo dõi trạng thái đơn hàng (đang xử lý, đang giao, đã giao).
-- Hiển thị lịch sử các đơn hàng đã đặt.
+- Tạo đơn hàng từ backend
+- Quản lý trạng thái đơn hàng (Chờ xử lý / Đang giao / Đã hoàn tất)
+- Liên kết đến hóa đơn và chi tiết món
 
 ---
 
-Công nghệ sử dụng
-- **Frontend**: HTML, CSS, JavaScript 
-- **Backend**: PHP (XAMPP), MySQL, Xử lý phân quyền login (session)
-- **Giao tiếp giữa Frontend và Backend**: Restful API.
+### 🌐 Website khách hàng
 
+#### 🏠 Trang chủ
+- Banner giới thiệu
+- Sản phẩm nổi bật
+- Tin tức / Khuyến mãi
 
---- Demo 
+#### 📋 Menu
+- Danh sách thức uống
+- Giá cả
+- Hình ảnh sản phẩm
+- Nút đặt hàng *(Đang phát triển)*
+
+#### 🏪 Giới thiệu
+- Thông tin quán
+- Sứ mệnh và giá trị
+- Hình ảnh thực tế
+
+#### 🍽️ Sản phẩm
+- Danh sách sản phẩm đặc biệt
+- Đánh giá sao
+- Nút mua hàng
+
+#### ⭐ Đánh giá
+- Phản hồi từ khách hàng
+- Hình ảnh minh họa
+- Hệ thống đánh giá sao
+
+#### 📞 Liên hệ
+- Form liên hệ
+- Thông tin liên lạc
+- Bản đồ quán
+
+## 💻 Công nghệ sử dụng
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: PHP
+- **Database**: MySQL
+- **API**: RESTful
+
+## 🧩 Tính năng nổi bật
+- Hệ thống phân quyền người dùng
+- Giỏ hàng trực tuyến
+- Hệ thống điểm thưởng khách hàng
+- Responsive design cho cả PC và mobile
+- Hệ thống đánh giá sản phẩm
+
+## 🔐 Bảo mật
+- Xác thực người dùng
+- Kiểm tra session người dùng
+- Mã hóa mật khẩu
+- CORS protection
+
+## 🎨 Giao diện
+- **Admin**: Chuyên nghiệp, tối giản
+- **Website**: Hiện đại, thân thiện
+- Hỗ trợ giao diện responsive (mọi thiết bị)
+- Hỗ trợ chế độ tối (dark theme)
+
+## 🤝 Tương tác
+
+### 👨‍💼 Admin
+- Quản lý CRUD các module chính
+- Thống kê và báo cáo
+- Quản lý đơn hàng, hóa đơn, nguyên liệu
+
+### 👨‍👩‍👧‍👦 Khách hàng
+- Đặt hàng online *(Đang phát triển)*
+- Xem lịch sử mua hàng
+- Đánh giá sản phẩm
+- Liên hệ với quán
+
+## 🚧 Trạng thái phát triển
+
+### ✅ Hoàn thành:
+- Hệ thống đăng nhập
+- Quản lý thức uống
+- Quản lý nhân viên
+- Quản lý khách hàng
+- Quản lý nguyên liệu
+- Quản lý hóa đơn
+- Đơn hàng online (Admin dashboard)
+- Giao diện website cơ bản
+
+### 🚧 Đang phát triển:
+- Đặt đơn hàng trên website (nút đặt hàng + quy trình giỏ hàng)
+- Tích hợp thanh toán trực tuyến
+
+### Demo 
 
 ** Form Login:
 
@@ -87,3 +156,7 @@ Công nghệ sử dụng
 ![image](https://github.com/user-attachments/assets/5df6fd9f-c5fc-4bbc-baf4-69a1644f002a)
 
 
+## 👨‍💻 Author
+
+- **Name**: Nguyễn Hùng
+- **Email**: nghung25030@gmail.com

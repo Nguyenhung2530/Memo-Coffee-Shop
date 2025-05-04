@@ -27,27 +27,23 @@ try {
         exit;
     }
 
-    // Lấy danh sách khách hàng
+    // Lấy danh sách khách hàng hoặc 1 khách hàng theo id
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $stmt = $pdo->query("SELECT CustomerID, FullName, Phone, Email, Gender, Address, 
-                            Points, TotalSpent, LastVisit, Notes 
-                            FROM customer ORDER BY CustomerID ASC");
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $stmt = $pdo->prepare("SELECT CustomerID, FullName, Phone, Email, Gender, Address, Notes, Points, TotalSpent FROM customer WHERE CustomerID = ?");
+            $stmt->execute([$id]);
+            $cus = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($cus) {
+                echo json_encode(['success' => true, 'data' => $cus]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Không tìm thấy khách hàng']);
+            }
+            exit;
+        }
+        $stmt = $pdo->query("SELECT CustomerID, FullName, Phone, Email, Gender, Address, Points, TotalSpent, LastVisit, Notes FROM customer ORDER BY CustomerID ASC");
         $customers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(['success' => true, 'data' => $customers]);
-        exit;
-    }
-
-    // Lấy 1 khách hàng theo id
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $stmt = $pdo->prepare("SELECT CustomerID, FullName, Phone, Email, Gender, Address, Notes FROM customer WHERE CustomerID = ?");
-        $stmt->execute([$id]);
-        $cus = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($cus) {
-            echo json_encode(['success' => true, 'data' => $cus]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Không tìm thấy khách hàng']);
-        }
         exit;
     }
 

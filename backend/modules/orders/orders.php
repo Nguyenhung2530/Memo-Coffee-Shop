@@ -35,6 +35,20 @@ try {
 
     // Lấy danh sách đơn hàng online
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // Lấy 1 đơn hàng theo id
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $stmt = $pdo->prepare("SELECT * FROM online_order WHERE OrderID = ?");
+            $stmt->execute([$id]);
+            $order = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($order) {
+                echo json_encode(['success' => true, 'data' => $order]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Không tìm thấy đơn hàng']);
+            }
+            exit;
+        }
+        
         $stmt = $pdo->query("SELECT * FROM online_order ORDER BY OrderID ASC");
         $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(['success' => true, 'data' => $orders]);

@@ -22,6 +22,20 @@ try {
 
     // Lấy danh sách nguyên liệu
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // Lấy 1 nguyên liệu theo id
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $stmt = $pdo->prepare("SELECT IngrID, Name, Unit, StockQty, PricePerUnit, Status, Note FROM ingredient WHERE IngrID = ?");
+            $stmt->execute([$id]);
+            $ingredient = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($ingredient) {
+                echo json_encode(['success' => true, 'data' => $ingredient]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Không tìm thấy nguyên liệu']);
+            }
+            exit;
+        }
+        
         $stmt = $pdo->query("SELECT IngrID, Name, Unit, StockQty, PricePerUnit, Status, Note, CreatedAt, UpdatedAt FROM ingredient ORDER BY IngrID ASC");
         $ingredients = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(['success' => true, 'data' => $ingredients]);

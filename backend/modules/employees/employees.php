@@ -27,26 +27,23 @@ try {
         exit;
     }
 
-    // Lấy danh sách nhân viên
+    // Lấy danh sách nhân viên hoặc 1 nhân viên theo id
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $stmt = $pdo->query("SELECT EmpID, FullName, Gender, Phone, Email, Position, Salary, StartDate, Status 
-                            FROM employee ORDER BY EmpID ASC");
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $stmt = $pdo->prepare("SELECT EmpID, FullName, Gender, Phone, Email, Position, Salary, StartDate, Status FROM employee WHERE EmpID = ?");
+            $stmt->execute([$id]);
+            $emp = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($emp) {
+                echo json_encode(['success' => true, 'data' => $emp]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Không tìm thấy nhân viên']);
+            }
+            exit;
+        }
+        $stmt = $pdo->query("SELECT EmpID, FullName, Gender, Phone, Email, Position, Salary, StartDate, Status FROM employee ORDER BY EmpID ASC");
         $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(['success' => true, 'data' => $employees]);
-        exit;
-    }
-
-    // Lấy 1 nhân viên theo id
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $stmt = $pdo->prepare("SELECT EmpID, FullName, Gender, Phone, Email, Position, Salary, StartDate, Status FROM employee WHERE EmpID = ?");
-        $stmt->execute([$id]);
-        $emp = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($emp) {
-            echo json_encode(['success' => true, 'data' => $emp]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Không tìm thấy nhân viên']);
-        }
         exit;
     }
 

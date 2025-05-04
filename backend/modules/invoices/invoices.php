@@ -23,6 +23,20 @@ try {
 
     // Lấy danh sách hóa đơn
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // Lấy 1 hóa đơn theo id
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $stmt = $pdo->prepare("SELECT InvoiceID, CustomerID, EmpID, DateTime, TotalAmount, PaymentStatus, Notes FROM invoice WHERE InvoiceID = ?");
+            $stmt->execute([$id]);
+            $invoice = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($invoice) {
+                echo json_encode(['success' => true, 'data' => $invoice]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Không tìm thấy hóa đơn']);
+            }
+            exit;
+        }
+        
         $stmt = $pdo->query("SELECT InvoiceID, CustomerID, EmpID, DateTime, TotalAmount, PaymentStatus, Notes FROM invoice ORDER BY InvoiceID ASC");
         $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(['success' => true, 'data' => $invoices]);

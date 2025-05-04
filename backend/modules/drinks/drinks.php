@@ -28,25 +28,23 @@ try {
         exit;
     }
 
-    // Lấy danh sách thức uống
+    // Lấy danh sách thức uống hoặc 1 thức uống theo id
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $stmt = $pdo->prepare("SELECT DrinkID, Name, Category, Size, Price, Status FROM drink WHERE DrinkID = ?");
+            $stmt->execute([$id]);
+            $drink = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($drink) {
+                echo json_encode(['success' => true, 'data' => $drink]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Không tìm thấy thức uống']);
+            }
+            exit;
+        }
         $stmt = $pdo->query("SELECT DrinkID, Name, Category, SubCategory, Size, Price, Status FROM drink ORDER BY DrinkID ASC");
         $drinks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(['success' => true, 'data' => $drinks]);
-        exit;
-    }
-
-    // Lấy 1 thức uống theo id
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $stmt = $pdo->prepare("SELECT DrinkID, Name, Category, Size, Price, Status FROM drink WHERE DrinkID = ?");
-        $stmt->execute([$id]);
-        $drink = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($drink) {
-            echo json_encode(['success' => true, 'data' => $drink]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Không tìm thấy thức uống']);
-        }
         exit;
     }
 
